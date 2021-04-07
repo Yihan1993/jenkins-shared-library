@@ -57,7 +57,7 @@
                     branches.each { branch ->
                         String name = branch.getName()
                         println "branch name is ${name}"
-                        if (name ==~ /\d+\.\d+\.\d+/) {
+                        if (name ==~ versionRegex) {
                             println "INFO: Jenkins-shared locked to version ${name}"
                             isLockedSharedLibraryRevision = true
                         }
