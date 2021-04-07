@@ -37,7 +37,7 @@
                 if ( url.contains('jenkins-shared-library') ) {
                     jenkinsSharedFound = true
                     println "INFO: Jenkins-shared find"
-                    Pattern versionRegex = ~/^\d+\.\d+\.\d+$/
+                    String versionRegex = ~/^\d+\.\d+\.\d+$/
                     /**
                      * When jenkins-shared is found evaluate revision branch/tag name.
                      * getLastBuiltRevision() returns the current executions build. This was functionally tested.
