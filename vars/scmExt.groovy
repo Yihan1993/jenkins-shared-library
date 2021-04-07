@@ -37,7 +37,7 @@
                 if ( url.contains('jenkins-shared-library') ) {
                     jenkinsSharedFound = true
                     println "INFO: Jenkins-shared find"
-                    Pattern versionRegex = ~/^\d+\.\d+\.\d+$/
+                    String versionRegex = ~/^\d+\.\d+\.\d+$/
                     /**
                      * When jenkins-shared is found evaluate revision branch/tag name.
                      * getLastBuiltRevision() returns the current executions build. This was functionally tested.
@@ -53,15 +53,16 @@
                      * It is always the tag/branch your looking at and doesn't report any extras...
                      * Despite this we loop to be safe
                      */
-                    Collection<Branch> branches = revision.getBranches()
-                    branches.each { branch ->
-                        String name = branch.getName()
+                    // Collection<Branch> branches = revision.getBranches()
+                    def name = revision.getBranches()[0].getName()
+                    // branches.each { branch ->
+                    //     String name = branch.getName()
                         println "branch name is ${name}"
-                        if (name ==~ versionRegex) {
-                            println "INFO: Jenkins-shared locked to version ${name}"
-                            isLockedSharedLibraryRevision = true
-                        }
-                    }
+                    //     if (name ==~ versionRegex) {
+                    //         println "INFO: Jenkins-shared locked to version ${name}"
+                    //         isLockedSharedLibraryRevision = true
+                    //     }
+                    // }
                 }
             }
         }
